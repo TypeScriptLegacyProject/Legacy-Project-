@@ -1,0 +1,20 @@
+403 - Forbidden
+// the server understands the request but doesn't authorize it because the token is missing
+
+401 - Unauthorized
+// the request lacks valid authentication credentials, it's used when the provided token or password is invalid
+
+500 - Internal Server Error
+// the server encountered an unexpected condition that prevented it from completing the request, it's used for unexpected errors during database operations
+
+404 - Not Found
+// the server can't find the requested resource, it's used when the specified buyer, seller or admin does not exist, or no changes are made during the update function
+
+400 - Bad Request
+// the server can't process the request 'cause of a client error, it's used when the client provides invalid data
+
+201 - Created
+// the request has succeeded and a new data has been created in our db, it's used when a new buyer, seller, or admin is created
+
+200 - OK
+// the request has succeeded, its used for successful auth or profil update 
