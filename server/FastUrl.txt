@@ -1,0 +1,46 @@
+// Auth Routes
+
+POST http://localhost:4000/api/auth/login - Login
+POST http://localhost:4000/api/auth/register - Register
+PUT http://localhost:4000/api/auth/update/:id - Update User
+
+// User Routes
+
+GET http://localhost:4000/api/users - Get All Users
+POST http://localhost:4000/api/users - Add New User
+GET http://localhost:4000/api/users/:id - Get User By ID
+DELETE http://localhost:4000/api/users/:id - Delete User By ID
+
+// Admin Routes
+
+GET http://localhost:4000/api/admin - Get All Admins
+POST http://localhost:4000/api/admin - Add New Admin
+GET http://localhost:4000/api/admin/:id - Get Admin By ID
+DELETE http://localhost:4000/api/admin/:id - Delete Admin By ID
+PUT http://localhost:4000/api/admin/:id - Update Admin By ID
+
+// Product Routes
+
+GET http://localhost:4000/api/products - Get All Products
+POST http://localhost:4000/api/products - Add New Product
+GET http://localhost:4000/api/products/:id - Get Product By ID
+GET http://localhost:4000/api/products/condition/:condition - Get Products By Condition
+GET http://localhost:4000/api/products/category/:category - Get Products By Category
+PUT http://localhost:4000/api/products/:id - Update Product By ID
+DELETE http://localhost:4000/api/products/:id - Delete Product By ID
+
+// Seller Routes
+
+GET http://localhost:4000/api/seller/seller - Get All Sellers
+GET http://localhost:4000/api/seller/:idd - Get Products By Seller ID
+GET http://localhost:4000/api/seller/:id - Get Seller Product By ID
+POST http://localhost:4000/api/seller - Add New Seller Product
+PUT http://localhost:4000/api/seller/:id - Update Seller Product By ID
+DELETE http://localhost:4000/api/seller/:id - Delete Seller Product By ID
+DELETE http://localhost:4000/api/seller/seller/:id - Delete Seller By ID
+
+// Panier Routes
+
+GET http://localhost:4000/api/panier/usercart/:userId - Get User Cart By User ID
+POST http://localhost:4000/api/panier/usercart - Add To Panier
+DELETE http://localhost:4000/api/panier/del/:productId - Remove From Panier By Product ID

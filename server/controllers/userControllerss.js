@@ -1,49 +1,40 @@
 const db = require("../database/index");
 
 module.exports = {
-  getusers: (req, res) => {
-    db.User.findAll()
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.send(err);
-      });
+  getusers: async (req, res) => {
+    try {
+      const data = await db.User.findAll();
+      res.send(data);
+    } catch (err) {
+      res.status(500).send(err); 
+    }
   },
-  addusers: (req, res) => {
-    db.User.create(req.body)
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.send(err);
-      });
+  addusers: async (req, res) => {
+    try {
+      const data = await db.User.create(req.body);
+      res.send(data);
+    } catch (err) {
+      res.status(500).send(err); 
+    }
   },
-  getOneuser: (req, res) => {
-    db.User.findOne({
-      where: {
-        id: req.params.id,
-      },
-    })
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.send(err);
-      });
+  getOneuser: async (req, res) => {
+    try {
+      const data = await db.User.findOne({ where: { id: req.params.id } });
+      res.send(data);
+    } catch (err) {
+      res.status(500).send(err); 
+    }
   },
-  removeuser: (req, res) => {
-    db.User.destroy({
-      where: {
-        id: req.params.id,
-      },
-    })
-      .then((data) => {
-        res.json(data);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.json(err);
-      });
+  removeuser: async (req, res) => {
+    try {
+      const data = await db.User.destroy({ where: { id: req.params.id } });
+      res.json(data);
+    } catch (err) {
+      res.status(500).send(err); 
+    }
   },
 };
+
+
+//Changes made:
+// i converted to the code async/await to improve readability and added 500 status to all errors
