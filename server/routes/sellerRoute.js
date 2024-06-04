@@ -11,7 +11,7 @@ const {
 } = require("../controllers/sellerController");
 
 SellerRoute.get("/seller/seller", getSeller);
-SellerRoute.get("/seller", getSellerProd);
+SellerRoute.get("/seller/:idd", getSellerProd);
 SellerRoute.get("/seller/:id", getOneSellerProd);
 SellerRoute.post("/seller", addSellerProd);
 SellerRoute.put("/seller/:id", updateSellerProd);

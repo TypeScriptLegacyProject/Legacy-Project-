@@ -1,9 +1,14 @@
+const { where } = require("sequelize");
 const db = require("../database/index");
 
 
 module.exports = {
     getSellerProd: (req, res) => {
-        db.Product.findAll()
+        db.Product.findAll(
+          {
+            where :{SellerId:req.params.idd}
+          }
+        )
           .then((data) => {
             console.log(data)
             res.json(data);
