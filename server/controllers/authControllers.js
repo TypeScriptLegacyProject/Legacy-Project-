@@ -20,7 +20,7 @@ async function login(req, res) {
       if (!isValidPassword) {
         return res.status(401).json({ message: "Invalid password" });
       }
-      const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, {
+      const token = jwt.sign({ userId: user.id, role: user.role,username:user.username }, JWT_SECRET, {
         expiresIn: "1h",
       });
       return res.status(200).json({ token, user });
@@ -34,7 +34,7 @@ async function login(req, res) {
         return res.status(401).json({ message: "Invalid password" });
       }
       const tokenSeller = jwt.sign(
-        { sellerId: seller.id, role: seller.role },
+        { sellerId: seller.id, role: seller.role,username:seller.username  },
         JWT_SECRET,
         {
           expiresIn: "1h",
@@ -47,7 +47,7 @@ async function login(req, res) {
       //   return res.status(401).json({message :"invalid password"})
       //  }
       const tokenadmin = jwt.sign(
-        { adminId: admin.id, role: admin.role },
+        { adminId: admin.id, role: admin.role,username:admin.username },
         JWT_SECRET,
         {
           expiresIn: "1h",
