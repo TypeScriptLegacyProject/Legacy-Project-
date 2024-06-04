@@ -80,7 +80,7 @@ async function register(req, res) {
         password: hashedPassword,
         role: "admin",
       });
-    } else {
+    } else if(role === "seller") {
       const seller = await db.Seller.create({
         username,
         email,
@@ -88,6 +88,7 @@ async function register(req, res) {
         role: "seller",
       });
     }
+    else {return("indifind")}
     return res.status(201).json({ message: "created successfully" });
   } catch (error) {
     console.error(error);
