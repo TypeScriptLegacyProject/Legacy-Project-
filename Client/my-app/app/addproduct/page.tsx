@@ -3,15 +3,15 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
+import "../styles/addProduct.css";
 
-const AddProduct: React.FC = () => {
+export default function AddProduct() {
   const [file, setFile] = useState<File | null>(null);
   const [url, setUrl] = useState<string>("");
   const [name, setName] = useState<string>("");
-  const [category, setcategory] = useState<string>("");
-  const [description, setdescription] = useState<string>("");
-  const [price, setprice] = useState<string>("");
-  
+  const [category, setCategory] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [price, setPrice] = useState<string>("");
 
   const uploadImage = () => {
     if (!file) {
@@ -33,96 +33,98 @@ const AddProduct: React.FC = () => {
         console.log(err);
       });
   };
-const adding=()=>{
 
-    axios.post(`http://localhost:4000/api/products`)
-}
+  const adding = () => {
+    axios.post(`http://localhost:4000/api/products`);
+  };
 
   return (
-    <div>
-      <div>
-        <div></div>
-        <div className="NewProduct">
-          <h2>Create New Product For Sale</h2>
-          <form>
-            <fieldset>
-              <label className="label">Product Name:</label>
-              <input
-                className="input"
-                type="text"
-                name="productname"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-            </fieldset>
-            <fieldset>
-              <label className="label">Product Image:</label>
-              <div className="image-input-container">
-                <input
-                  className="input file-input"
-                  type="file"
-                  onChange={(e) => {
-                    if (e.target.files) {
-                      setFile(e.target.files[0]);
-                    }
-                  }}
-                />
-                {url && (
-                  <img className="small-image" src={url} alt="Uploaded" />
-                )}
-                <button
-                  className="button upload-button"
-                  type="button"
-                  onClick={uploadImage}
-                >
-                  Upload!
-                </button>
-              </div>
-            </fieldset>
-            <fieldset>
-              <label className="label">Description:</label>
-              <textarea
-                className="textarea"
-                name="description"
-                onChange={(e) => {
-                  setdescription(e.target.value);
-                }}
-              ></textarea>
-            </fieldset>
-            <fieldset>
-              <label className="label">Price:</label>
-              <input
-                className="input"
-                type="number"
-                step="0.01"
-                name="price"
-                onChange={(e) => {
-                  setprice(e.target.value);
-                }}
-              />
-            </fieldset>
-            <fieldset>
-                <div>
-                <p>category</p>
-              <select  value={category} onChange={(e)=>{setcategory(e.target.value)}} >
-                <option value="sport">Sport</option>
-                <option value="gaming">Gaming</option>
-                <option value="phones">Phones</option>
-                <option value="pcs">PCs</option>
-                <option value="kitchen">Kitchen</option>
-                <option value="fishing">Fishing</option>
-              </select>
-              </div>
-            </fieldset>
-            <button className="button" type="submit">
-              add Product
+    <div className="NewProduct">
+      <h2>Create New Product For Sale</h2>
+      <form>
+        <fieldset>
+          <label className="label">Product Name:</label>
+          <input
+            className="input"
+            type="text"
+            name="productname"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </fieldset>
+        <fieldset>
+          <label className="label">Product Image:</label>
+          <div className="image-input-container">
+            <input
+              className="input file-input"
+              type="file"
+              onChange={(e) => {
+                if (e.target.files) {
+                  setFile(e.target.files[0]);
+                }
+              }}
+            />
+            {url && <img className="small-image" src={url} alt="Uploaded" />}
+            <button
+              className="button upload-button"
+              type="button"
+              onClick={uploadImage}
+            >
+              Upload!
             </button>
-          </form>
-        </div>
-      </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <label className="label">Description:</label>
+          <textarea
+            className="textarea"
+            name="description"
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          ></textarea>
+        </fieldset>
+        <fieldset>
+          <label className="label">Price:</label>
+          <input
+            className="input"
+            type="number"
+            step="0.01"
+            name="price"
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+          />
+        </fieldset>
+        <fieldset>
+          <label className="label">Category:</label>
+          <select
+            className="input"
+            value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
+          >
+            <option value="sport">Sport</option>
+            <option value="gaming">Gaming</option>
+            <option value="phones">Phones</option>
+            <option value="pcs">PCs</option>
+            <option value="kitchen">Kitchen</option>
+            <option value="fishing">Fishing</option>
+          </select>
+        </fieldset>
+        <button
+          className="button"
+          type="button"
+          onClick={(e) => {
+            adding();
+            e.preventDefault();
+          }}
+        >
+          Add Product
+        </button>
+      </form>
     </div>
   );
-};
-
-export default AddProduct;
+}
