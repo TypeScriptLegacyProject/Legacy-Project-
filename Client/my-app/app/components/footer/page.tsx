@@ -1,6 +1,8 @@
-'use client'
+"use client";
 
-function Footer () {
+import "../../styles/footer.css";
+
+function Footer() {
   return (
     <div id="footer1">
       <footer className="footer">
@@ -104,6 +106,6 @@ function Footer () {
       </footer>
     </div>
   );
-};
+}
 
 export default Footer;
