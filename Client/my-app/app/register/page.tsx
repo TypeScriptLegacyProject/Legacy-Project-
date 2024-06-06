@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
@@ -29,73 +30,71 @@ export default function SignUp() {
   }
 
   return (
-    <div className="container">
-      <div className="signup-container">
-        <div className="signup-form-wrapper">
-          <form className="signup-form" autoComplete="off">
-            <h4>
-              We are <span>HERE</span>
-            </h4>
-            <p>Welcome! Sign up to view today's products:</p>
-            <div className="input-group">
-              <input
-                placeholder="username"
-                type="text"
-                name="username"
-                id="username"
-                autoComplete="off"
-                onChange={(e) => setUsername(e.target.value)}
-                className="input-field"
-              />
-            </div>
-            <div className="input-group">
-              <input
-                placeholder="email"
-                type="text"
-                name="email"
-                id="email"
-                autoComplete="off"
-                onChange={(e) => setEmail(e.target.value)}
-                className="input-field"
-              />
-            </div>
-            <div className="input-group">
-              <input
-                placeholder="Password"
-                type="password"
-                name="password"
-                id="password"
-                autoComplete="off"
-                onChange={(e) => setPassword(e.target.value)}
-                className="input-field"
-              />
-            </div>
-            <div className="input-group">
-              <select
-                name="role"
-                id="role"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className="input-field dropdown-field"
-              >
-                <option value="seller">Seller</option>
-                <option value="user">Buyer</option>
-              </select>
-            </div>
-            <button
-              className="signup-button"
-              onClick={(e: React.FormEvent) => {
-                register();
-                e.preventDefault();
-                router.push("/");
-              }}
-            >
-              Sign up
-            </button>
-          </form>
-          {message && <p>{message}</p>}
+    <div id="register-sign">
+      <div className="register-form-container">
+        <h4>Welcome Newcomer!</h4>
+        <p>Join our community and enjoy exclusive member benefits!</p>
+        <div className="register-input-group">
+          <input
+            placeholder="Username"
+            type="text"
+            name="username"
+            id="username"
+            autoComplete="off"
+            onChange={(e) => setUsername(e.target.value)}
+            className="register-input-field"
+          />
         </div>
+        <div className="register-input-group">
+          <input
+            placeholder="Email"
+            type="text"
+            name="email"
+            id="email"
+            autoComplete="off"
+            onChange={(e) => setEmail(e.target.value)}
+            className="register-input-field"
+          />
+        </div>
+        <div className="register-input-group">
+          <input
+            placeholder="Password"
+            type="password"
+            name="password"
+            id="password"
+            autoComplete="off"
+            onChange={(e) => setPassword(e.target.value)}
+            className="register-input-field"
+          />
+        </div>
+        <div className="register-input-group register-dropdown-wrapper">
+          <select
+            name="role"
+            id="role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="register-dropdown-field"
+          >
+            <option value="seller">Seller</option>
+            <option value="user">Buyer</option>
+          </select>
+        </div>
+        <button
+          className="register-signup-button"
+          onClick={(e: React.FormEvent) => {
+            register();
+            e.preventDefault();
+            router.push("/");
+          }}
+        >
+          Sign up
+        </button>
+        {message && <p>{message}</p>}
+        <p className="register-login-text">
+          You already have an account? <a href="/login" className="register-login-link">Log in</a>
+        </p>
       </div>
+      <div className="register-image-container"></div>
     </div>
   );
 }
