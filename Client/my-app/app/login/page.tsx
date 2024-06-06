@@ -8,7 +8,7 @@ import "../styles/login.css";
 
 export default function Login() {
 
-  const { loginAction } = useAuth<>();
+  const { loginAction } = useAuth();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -22,19 +22,7 @@ export default function Login() {
   };
 
 
-  // function login() {
-  //   axios
-  //     .post("http://localhost:4000/api/auth/login", {
-  //       username: username,
-  //       password: password,
-  //     })
-  //     .then(function (response) {
-  //       console.log(response.data);
-  //     })
-  //     .catch(function (err) {
-  //       console.log(err);
-  //     });
-  // }
+  
 
   return (
     <div id="sign">
