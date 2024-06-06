@@ -2,7 +2,8 @@
 
 POST http://localhost:4000/api/auth/login - Login
 POST http://localhost:4000/api/auth/register - Register
-PUT http://localhost:4000/api/auth/update/:id - Update User
+PUT http://localhost:4000/api/auth/updateUser- Update User
+PUT http://localhost:4000/api/auth/updateSeller- Update seller
 
 // User Routes
 
