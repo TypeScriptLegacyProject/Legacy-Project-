@@ -76,7 +76,7 @@ export default function SignUp() {
             className="register-dropdown-field"
           >
             <option value="seller">Seller</option>
-            <option value="buyer">Buyer</option>
+            <option value="user">Buyer</option>
           </select>
         </div>
         <button
