@@ -2,28 +2,39 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import axios from "axios";
+
+import { useAuth } from "../auth";
 import "../styles/login.css";
 
 export default function Login() {
+
+  const { loginAction } = useAuth<>();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const [email, setEmail] = useState("");
   const router = useRouter();
 
-  function login() {
-    axios
-      .post("http://localhost:4000/api/auth/login", {
-        username: username,
-        password: password,
-      })
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  }
+  const handleLogin = async (e:any) => {
+    e.preventDefault();
+    loginAction({ username: username, email: email, password: password });
+    router.push("/")
+  };
+
+
+  // function login() {
+  //   axios
+  //     .post("http://localhost:4000/api/auth/login", {
+  //       username: username,
+  //       password: password,
+  //     })
+  //     .then(function (response) {
+  //       console.log(response.data);
+  //     })
+  //     .catch(function (err) {
+  //       console.log(err);
+  //     });
+  // }
 
   return (
     <div id="sign">
@@ -38,6 +49,17 @@ export default function Login() {
             id="username"
             autoComplete="off"
             onChange={(e) => setUsername(e.target.value)}
+            className="login-input-field"
+          />
+        </div>
+        <div className="login-floating-label">
+          <input
+            placeholder="email"
+            type="text"
+            name="email"
+            id="email"
+            autoComplete="off"
+            onChange={(e) => setEmail(e.target.value)}
             className="login-input-field"
           />
         </div>
@@ -60,9 +82,9 @@ export default function Login() {
         </div>
         <button
           className="login-login-button"
-          onClick={() => {
-            login();
-            router.push("/");
+          onClick={(e) => {
+            handleLogin(e)
+           
           }}
         >
           Login

@@ -84,7 +84,7 @@ export default function SignUp() {
           onClick={(e: React.FormEvent) => {
             register();
             e.preventDefault();
-            router.push("/");
+            router.push("/login");
           }}
         >
           Sign up
