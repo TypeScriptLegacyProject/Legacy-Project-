@@ -15,16 +15,11 @@ async function login(req, res) {
       if (!isValidPassword) {
         return res.status(401).json({ message: "invalid password" });
       }
-<<<<<<< HEAD
-      const token = jwt.sign({ userId: user.id, role: user.role,username:user.username }, JWT_SECRET, {
-        expiresIn: "1h",
-      });
-=======
+
       const token = jwt.sign(
         { userId: user.id, role: user.role, username: user.username },
         JWT_SECRET
       );
->>>>>>> 68e634aef58ce71ae74aae2bc7426a36a580b46e
       return res.status(200).json({ token, user });
     } else if (seller) {
       const PasswordisValid = await bcrypt.compare(password, seller.password);
@@ -32,16 +27,9 @@ async function login(req, res) {
         return res.status(401).json({ message: "invalid password" });
       }
       const tokenSeller = jwt.sign(
-<<<<<<< HEAD
-        { sellerId: seller.id, role: seller.role,username:seller.username  },
-        JWT_SECRET,
-        {
-          expiresIn: "1h",
-        }
-=======
+
         { sellerId: seller.id, role: seller.role, username: seller.username },
         JWT_SECRET
->>>>>>> 68e634aef58ce71ae74aae2bc7426a36a580b46e
       );
       return res.status(200).json({ tokenSeller, seller });
     } else if (admin) {
@@ -50,16 +38,10 @@ async function login(req, res) {
         return res.status(401).json({ message: "invalid password" });
       }
       const tokenadmin = jwt.sign(
-<<<<<<< HEAD
-        { adminId: admin.id, role: admin.role,username:admin.username },
-        JWT_SECRET,
-        {
-          expiresIn: "1h",
-        }
-=======
+
         { adminId: admin.id, role: admin.role, username: admin.username },
         JWT_SECRET
->>>>>>> 68e634aef58ce71ae74aae2bc7426a36a580b46e
+
       );
       return res.status(200).json({ tokenadmin, admin });
     } else {
