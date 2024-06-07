@@ -38,7 +38,8 @@ export default function AuthProvider({ children }: any) {
           localStorage.setItem("seller", JSON.stringify(response.data.seller));
           setToken(response.data.tokenSeller);
           localStorage.setItem("token", response.data.tokenSeller);
-          router.push("/");
+          router.push("/editseller");
+        
         } else if (response.data.admin) {
           setAdmin(response.data.admin);
           localStorage.setItem("admin", JSON.stringify(response.data.admin));
@@ -50,7 +51,7 @@ export default function AuthProvider({ children }: any) {
           localStorage.setItem("user", JSON.stringify(response.data.user));
           setToken(response.data.token);
           localStorage.setItem("token", response.data.token);
-          router.push("/");
+          router.push("/editbuyer");
         }
       }
     } catch (err: any) {

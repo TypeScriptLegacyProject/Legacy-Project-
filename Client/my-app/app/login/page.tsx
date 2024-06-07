@@ -14,11 +14,12 @@ export default function Login() {
   const [message, setMessage] = useState<string>("");
   const [email, setEmail] = useState("");
   const router = useRouter();
+  
 
   const handleLogin = async (e:any) => {
     e.preventDefault();
     loginAction({ username: username, email: email, password: password });
-    router.push("/")
+    
   };
 
 
