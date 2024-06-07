@@ -23,7 +23,7 @@ export default function AddProduct() {
   const uploadImage = () => {
     const form = new FormData();
     form.append("file", file);
-    form.append("upload_preset", "exclusive");
+    form.append("upload_preset", "exclusive") ;
 
     axios
       .post("https://api.cloudinary.com/v1_1/dcyeimdps/image/upload", form)
