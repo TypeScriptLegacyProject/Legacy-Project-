@@ -88,42 +88,7 @@ async function register(req, res) {
   }
 }
 
-// async function UpdateUser(req, res) {
-//   const { id } = req.params;
-//   const { username, email, password } = req.body;
-//   if (!username && !email && !password) {
-//     return res.status(400).json({ message: "there is no data to update" });
-//   }
-//   try {
-//     const updateFields = {};
-//     if (username) {
-//       updateFields.username = username;
-//     }
-//     if (email) {
-//       updateFields.email = email;
-//     }
-//     if (password) {
-//       const salt = await bcrypt.genSalt(10);
 
-//       const hashedPassword = await bcrypt.hash(password, salt);
-//       updateFields.password = hashedPassword;
-//     }
-//     const result = await db.User.update(updateFields, {
-//       where: { id },
-//     });
-
-//     if (result[0] === 0) {
-//       return res
-//         .status(404)
-//         .json({ message: "User not found or no changes detected" });
-//     }
-
-//     return res.status(200).json({ message: "Profile updated successfully" });
-//   } catch (err) {
-//     console.error("Error updating profile:", err.message);
-//     return res.status(500).json({ error: "Server error" });
-//   }
-// }
  function UpdateUser(req, res) {
   db.User.findOne({ where: { email: req.body.email } })
     .then((User) => {
