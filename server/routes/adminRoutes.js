@@ -1,9 +1,10 @@
 const router = require("express").Router();
 
-const { getadmin, addadmin, getOneadmin, removeadmin, updateadmin}=require("../controllers/adminControllers")
+const { getadmin, addadmin, getOneadmin, removeadmin, updateadmin, allCustomer}=require("../controllers/adminControllers")
 
 
 router.get("/admin", getadmin)
+router.get("/Customer",allCustomer)
 router.post("/admin", addadmin)
 router.get("/admin/:id", getOneadmin)
 router.delete("/admin/:id", removeadmin)

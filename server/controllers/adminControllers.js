@@ -57,5 +57,16 @@ module.exports = {
           .catch((err) => {
             res.send(err);
           });
+      },
+       allCustomer : async (req, res) => {
+        try {
+          const user= await db.User.findAll();
+          const sellers = await db.Seller.findAll();
+      
+          res.status(200).json({ user, sellers });
+        } catch (error) {
+          console.log(error);
+          res.status(500).json({ error: error.message });
+        }
       }
 }
