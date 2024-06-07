@@ -6,21 +6,21 @@ import Image from "next/image";
 import "../styles/addProduct.css";
 
 export default function AddProduct() {
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | any>(null);
   const [url, setUrl] = useState<string>("");
   const [name, setName] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
+  const [category, setCategory] = useState<string>("sport");
   const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<string>("");
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
-      uploadImage(e.target.files[0]);
-    }
-  };
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     setFile(e.target.files[0]);
+  //     uploadImage(e.target.files[0]);
+  //   }
+  // };
 
-  const uploadImage = (file: File) => {
+  const uploadImage = () => {
     const form = new FormData();
     form.append("file", file);
     form.append("upload_preset", "exclusive");
@@ -38,12 +38,20 @@ export default function AddProduct() {
 
   const adding = () => {
     axios.post(`http://localhost:4000/api/products`, {
-      name,
-      category,
-      description,
-      price,
-      imageUrl: url,
-    });
+      name:name,
+      category:category,
+      description:description,
+      price:price,
+      imgUrl: url,
+    })
+    .then((res)=>{
+      console.log("adding",res);
+      
+    })
+    .catch((err)=>{
+      console.log(err);
+      
+    })
   };
 
   return (
@@ -106,9 +114,9 @@ export default function AddProduct() {
             <button
               className="addProduct-button addProduct-add-button"
               type="button"
-              onClick={(e) => {
+              onClick={() => {
                 adding();
-                e.preventDefault();
+              
               }}
             >
               Add Product
@@ -144,8 +152,15 @@ export default function AddProduct() {
               id="fileInput"
               className="addProduct-file-input"
               type="file"
-              onChange={handleFileChange}
+              onChange={(e:any)=>{
+                setFile(e.target.files[0])
+          
+              }}
+             
             />
+            <button  onClick={()=>{
+                uploadImage()
+              }}>select</button>
           </div>
         </div>
       </div>

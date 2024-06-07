@@ -12,6 +12,7 @@ export default function SignUp() {
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const router = useRouter();
+  // a
 
   function register() {
     axios
