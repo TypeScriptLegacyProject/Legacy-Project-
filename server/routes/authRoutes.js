@@ -5,9 +5,11 @@ const {
   login,
   register,
   UpdateUser,
+  UpdateSeller,
 } = require("../controllers/authControllers.js");
 
 router.post("/login", login);
 router.post("/register", register);
-router.put("/update/:id", UpdateUser);
+router.put("/updateUser", UpdateUser);
+router.put("/updateSeller", UpdateSeller);
 module.exports = router;
