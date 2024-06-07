@@ -42,6 +42,7 @@ async function login(req, res) {
 
         { adminId: admin.id, role: admin.role, username: admin.username },
         JWT_SECRET
+
       );
       return res.status(200).json({ tokenadmin, admin });
     } else {
@@ -87,7 +88,6 @@ async function register(req, res) {
     return res.status(500).json({ message: "error" });
   }
 }
-
 
  function UpdateUser(req, res) {
   db.User.findOne({ where: { email: req.body.email } })
