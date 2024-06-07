@@ -2,11 +2,30 @@
 import { useEffect, useState } from "react";
 import axios from "axios"
 import Navbar from "./components/navbar/page";
+import { useAuth } from "./auth";
 
-export default function(){
+
+export default function home(){
     const [prod, setProd] = useState<any[]>([]);
     const [best, setBest] = useState<any[]>([]);
   const [flash, setFlash] = useState<any[]>([]);
+  const { user } = useAuth();
+
+  const addToPanier = (id:any) => {
+    const data = {
+      UserId: user.id,
+      productId: id,
+    };
+
+    axios
+      .post("http://localhost:4000/api/panier/usercart", data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
     
     useEffect(() => {
       axios
@@ -80,7 +99,9 @@ export default function(){
                   <div className="items cart">
                     <i className="fa fa-shopping-cart" />
                     <span
-                     
+                      onClick={() => {
+                        addToPanier(el.id);
+                      }}
                     >
                       ADD TO CART
                     </span>
@@ -120,6 +141,9 @@ export default function(){
                     <div className="items cart">
                       <i className="fa fa-shopping-cart" />
                       <span
+                      onClick={() => {
+                        addToPanier(el.id);
+                      }}
                        
                       >
                         ADD TO CART
@@ -151,7 +175,11 @@ export default function(){
                     </div>
                     <div className="items cart">
                       <i className="fa fa-shopping-cart" />
-                      <span>
+                      <span
+                      onClick={() => {
+                        addToPanier(product.id);
+                      }}
+                      >
                         ADD TO CART
                       </span>
                     </div>

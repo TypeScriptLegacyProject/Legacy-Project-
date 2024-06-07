@@ -19,7 +19,7 @@ export default function Login() {
   const handleLogin = async (e:any) => {
     e.preventDefault();
     loginAction({ username: username, email: email, password: password });
-    router.push("/")
+    
   };
 
 

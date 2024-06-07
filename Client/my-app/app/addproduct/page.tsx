@@ -13,13 +13,6 @@ export default function AddProduct() {
   const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<string>("");
 
-  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.files && e.target.files[0]) {
-  //     setFile(e.target.files[0]);
-  //     uploadImage(e.target.files[0]);
-  //   }
-  // };
-
   const uploadImage = () => {
     const form = new FormData();
     form.append("file", file);
@@ -38,19 +31,17 @@ export default function AddProduct() {
 
   const adding = () => {
     axios.post(`http://localhost:4000/api/products`, {
-      name:name,
-      category:category,
-      description:description,
-      price:price,
+      name: name,
+      category: category,
+      description: description,
+      price: price,
       imgUrl: url,
     })
-    .then((res)=>{
-      console.log("adding",res);
-      
+    .then((res) => {
+      console.log("adding", res);
     })
-    .catch((err)=>{
+    .catch((err) => {
       console.log(err);
-      
     })
   };
 
@@ -67,6 +58,7 @@ export default function AddProduct() {
                 className="addProduct-input"
                 type="text"
                 name="productname"
+                placeholder="Please enter your product name"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -77,6 +69,7 @@ export default function AddProduct() {
               <textarea
                 className="addProduct-textarea"
                 name="description"
+                placeholder="Please enter your product description"
                 onChange={(e) => {
                   setDescription(e.target.value);
                 }}
@@ -89,6 +82,7 @@ export default function AddProduct() {
                 type="number"
                 step="0.01"
                 name="price"
+                placeholder="Please enter your product price"
                 onChange={(e) => {
                   setPrice(e.target.value);
                 }}
@@ -116,12 +110,17 @@ export default function AddProduct() {
               type="button"
               onClick={() => {
                 adding();
-              
               }}
             >
               Add Product
             </button>
           </form>
+        </div>
+        <div className="addProduct-center">
+          <div className="addProduct-exclusive">
+            <span className="addProduct-exclusive-red">Ex</span>
+            <span className="addProduct-exclusive-black">clusive</span>
+          </div>
         </div>
         <div className="addProduct-right">
           <div className="addProduct-upload-container">
@@ -134,8 +133,8 @@ export default function AddProduct() {
                   className="addProduct-uploaded-image"
                   src={url}
                   alt="Uploaded"
-                  width={150}
-                  height={150}
+                  width={250}
+                  height={250}
                 />
               )}
             </div>
@@ -146,21 +145,24 @@ export default function AddProduct() {
                 document.getElementById("fileInput")?.click();
               }}
             >
-              Upload
+              Select
             </button>
             <input
               id="fileInput"
               className="addProduct-file-input"
               type="file"
-              onChange={(e:any)=>{
-                setFile(e.target.files[0])
-          
+              onChange={(e: any) => {
+                setFile(e.target.files[0]);
               }}
-             
             />
-            <button  onClick={()=>{
-                uploadImage()
-              }}>select</button>
+            <button
+              className="addProduct-button addProduct-upload-button"
+              onClick={() => {
+                uploadImage();
+              }}
+            >
+              Upload
+            </button>
           </div>
         </div>
       </div>
