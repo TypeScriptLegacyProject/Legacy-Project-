@@ -123,7 +123,7 @@ export default function Panier () {
             <p>Subtotal: ${total}</p>
             <p>Shipping: Free</p>
             <p>Total: ${total}</p>
-            <button className="checkout-button">Proceed to checkout</button>
+            <button className="checkout-button"  onClick={() => router.push("/")}>Proceed to checkout</button>
           </div>
         </div>
         <Footer/>
