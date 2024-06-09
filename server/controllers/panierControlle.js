@@ -31,6 +31,20 @@ module.exports = {
       res.status(500).send(err);
     }
   },
+  getOrders: function (req, res) {
+    db.Panier
+      .findAll()
+      .then((result) => {
+        res.send(result);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  },
+
+
+
+  
 };
 
 //Changes made:

@@ -47,7 +47,7 @@ export default function Navbar() {
             <a href="/cart">Cart</a>
           </li>
           <li>
-            <a href="#">Wishlist</a>
+            <a href="/wishlist">Wishlist</a>
           </li>
           <li onClick={signOut}>
             <a>Log Out</a>
