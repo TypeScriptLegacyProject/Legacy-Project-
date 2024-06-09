@@ -55,6 +55,14 @@ module.exports = {
       res.status(500).send(err);
     }
   },
+  addseller: async (req, res) => {
+    try {
+      const data = await db.Seller.create(req.body);
+      res.send(data);
+    } catch (err) {
+      res.status(500).send(err); 
+    }
+  },
   removeSeller: async (req, res) => {
     try {
       const data = await db.Seller.destroy({ where: { id: req.params.id } });
