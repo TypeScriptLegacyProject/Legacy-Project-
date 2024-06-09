@@ -8,11 +8,13 @@ const {
   removeSellerProd,
   getSeller,
   removeSeller,
+  addseller,
 } = require("../controllers/sellerController");
 
 SellerRoute.get("/seller/seller", getSeller);
 SellerRoute.get("/seller/:idd", getSellerProd);
 SellerRoute.get("/seller/:id", getOneSellerProd);
+SellerRoute.post("addseller",addseller)
 SellerRoute.post("/seller", addSellerProd);
 SellerRoute.put("/seller/:id", updateSellerProd);
 SellerRoute.delete("/seller/:id", removeSellerProd);

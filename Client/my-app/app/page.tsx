@@ -26,6 +26,22 @@ export default function Home() {
         console.error(err);
       });
   };
+  const wish = (id: any) => {
+    const data = {
+      UserId: user.id,
+      productId: id,
+    };
+
+    axios
+      .post("http://localhost:4000/api/panier/usercart", data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
 
   useEffect(() => {
     axios
@@ -93,7 +109,7 @@ export default function Home() {
                   </div>
                   <div className="items cart">
                     <button className="button" onClick={() => addToPanier(el.id)}>ADD TO CART</button>
-                    <span className="icon-heart2" onClick={() => addToPanier(el.id)}>❤️</span>
+                    <span className="icon-heart2" onClick={() => wish(el.id)}>❤️</span>
                   </div>
                   
                 </div>

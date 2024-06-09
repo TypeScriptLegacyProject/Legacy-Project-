@@ -70,7 +70,7 @@ export default function EditProfile ()  {
             <div className="sidebar-section">
            </div>
             <div className="sidebar-section">
-              <h4 onClick={() => router.push('/add')}>My Wishlist</h4>
+              <h4 onClick={() => router.push('/wishlist')}>My Wishlist</h4>
             </div>
           </div>
           <div className="main-content">

@@ -3,12 +3,12 @@ const {
   getUserCart,
   addToPanier,
   remove,
-  // getOrders,
+  allpanier,
 } = require("../controllers/panierControlle.js");
 
 // routerPa.get("/usercart", getOrders);
 routerPa.get("/usercart/:userId", getUserCart);
-
+routerPa.get("/all",allpanier);
 routerPa.post("/usercart", addToPanier);
 routerPa.delete("/del/:productId", remove);
 
