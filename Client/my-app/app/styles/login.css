@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e6ccff;
+}
+
+#sign {
+  display: flex;
+  width: 1200px; 
+  height: 600px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.login-image-container {
+  width: 60%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../images/login.png") no-repeat center center/cover;
+}
+
+.login-form-container {
+  background: #fff;
+  padding: 2rem;
+  width: 40%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 10px 10px 0;
+}
+
+.login-form-container h4 {
+  font-size: 24px;
+  margin-bottom: 1rem;
+  color: #800080;
+  text-align: center;
+  margin-top: -2rem; 
+}
+
+.login-form-container p {
+  margin-bottom: 1.5rem;
+  color: #800080;
+  text-align: center;
+}
+
+.login-floating-label {
+  margin-bottom: 1.5rem;
+  position: relative;
+  width: 80%; 
+}
+
+.login-input-field {
+  width: 100%; 
+  padding: 0.8rem; 
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+  background-color: #fff;
+}
+
+.login-input-field::placeholder {
+  color: #c0c0c0;
+}
+
+.login-input-field:focus {
+  border-color: #800080;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%; 
+  margin-bottom: 1.5rem;
+}
+
+.login-remember-me {
+  font-size: 0.9rem; 
+  color: #800080;
+}
+
+.login-forgot-password {
+  font-size: 0.9rem; 
+  color: #800080;
+  text-decoration: none;
+}
+
+.login-forgot-password:hover {
+  text-decoration: underline;
+}
+
+.login-login-button {
+  width: 80%; 
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 1rem;
+  background-color: #800080;
+}
+
+.login-login-button:hover {
+  background-color: #660066;
+}
+
+.login-signup-link {
+  background-color: transparent;
+  color: #800080;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login-signup-link:hover {
+  text-decoration: underline;
+}
+
+.login-social-media {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.login-social-media a {
+  margin: 0 0.5rem;
+  color: #800080;
+  text-decoration: none;
+}
+
+.login-social-media a:hover {
+  color: #660066;
+}

@@ -1,6 +1,8 @@
-'use client'
+"use client";
 
-function Footer () {
+import "../../styles/footer.css";
+
+function Footer() {
   return (
     <div id="footer1">
       <footer className="footer">
@@ -85,7 +87,7 @@ function Footer () {
                       href="mailto:contact.laboiserie@gmail.com"
                       className="footer__nav-link"
                     >
-                      contact.salahadem817@gmail.com
+                      contact.bigbOss@gmail.com
                     </a>
                   </li>
                 </ul>
@@ -96,7 +98,7 @@ function Footer () {
             <p>
               Réalisé par{" "}
               <a href="https://twitter.com/silvereledev" target="_blank">
-                @AdamLeDev
+                @BigBoss
               </a>
             </p>
           </div>
@@ -104,6 +106,6 @@ function Footer () {
       </footer>
     </div>
   );
-};
+}
 
 export default Footer;

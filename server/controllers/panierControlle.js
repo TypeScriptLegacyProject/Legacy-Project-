@@ -31,7 +31,16 @@ module.exports = {
       res.status(500).send(err);
     }
   },
-};
+  allpanier:async(req,res)=>{
+    try{
+   const data=   await db.Panier.findAll()
+      res.send(data)
+    }
+    catch (err) {
+      res.status(500).send(err);
+  }
+}
+}
 
 //Changes made:
 // i converted to the code async/await to improve readability and added 500 status to all errors
