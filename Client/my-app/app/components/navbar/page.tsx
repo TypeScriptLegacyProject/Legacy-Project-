@@ -44,7 +44,7 @@ export default function Navbar() {
             <a href="#">Contact</a>
           </li>
           <li>
-            <a href="/">Cart</a>
+            <a href="/cart">Cart</a>
           </li>
           <li>
             <a href="#">Wishlist</a>
