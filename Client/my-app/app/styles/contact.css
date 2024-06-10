@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #e6ccff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .contact-us-container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+  }
+  
+  .breadcrumb {
+    font-size: 16px;
+    color: #800080;
+    margin-bottom: 1rem;
+  }
+  
+  .breadcrumb strong {
+    font-weight: bold;
+  }
+  
+  .contact-us-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .contact-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .details {
+    flex: 1;
+  }
+  
+  .details h3 {
+    color: #800080;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .details p {
+    margin: 0.25rem 0;
+    color: #333;
+  }
+  
+  .contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 85%; /* Adjusted width */
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border-color: #800080;
+  }
+  
+  textarea {
+    resize: vertical;
+    height: 150px;
+  }
+  
+  .sendbutton {
+    width: 85%; /* Adjusted width */
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #800080;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .sendbutton:hover {
+    background-color: #660066;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sendbutton:active {
+    background-color: #4b004b;
+    transform: translateY(0);
+  }
+  
+  hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 1rem 0;
+  }
+  

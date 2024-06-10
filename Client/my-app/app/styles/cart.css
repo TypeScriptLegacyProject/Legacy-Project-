@@ -1,0 +1,146 @@
+
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #e6ccff;
+}
+
+.panier-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #800080;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.cart-table th, .cart-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  color: #800080;
+}
+
+.cart-table th {
+  background-color: #800080;
+  color: #fff;
+}
+
+.product-image {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.return-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #800080;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.return-button:hover {
+  background-color: #660066;
+}
+
+.coupon-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.coupon-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.coupon-input:focus {
+  border-color: #800080;
+}
+
+.apply-coupon {
+  padding: 10px 20px;
+  background-color: #800080;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.apply-coupon:hover {
+  background-color: #660066;
+}
+
+.cart-total {
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.cart-total h3 {
+  margin-bottom: 20px;
+  color: #800080;
+}
+
+.cart-total p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.checkout-button {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #800080;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+  background-color: #660066;
+}
+
+.quantity-input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.quantity-input:focus {
+  border-color: #800080;
+}

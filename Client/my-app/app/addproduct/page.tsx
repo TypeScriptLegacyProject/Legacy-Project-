@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import "../styles/addProduct.css";
+import { useRouter } from "next/navigation";
 
 export default function AddProduct() {
   const [file, setFile] = useState<File | any>(null);
@@ -12,6 +13,7 @@ export default function AddProduct() {
   const [category, setCategory] = useState<string>("sport");
   const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<string>("");
+  const router = useRouter();
 
   const uploadImage = () => {
     const form = new FormData();
@@ -39,6 +41,7 @@ export default function AddProduct() {
     })
     .then((res) => {
       console.log("adding", res);
+     router.push("/")
     })
     .catch((err) => {
       console.log(err);
