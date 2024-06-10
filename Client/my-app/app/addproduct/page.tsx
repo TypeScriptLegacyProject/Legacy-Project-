@@ -5,6 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import "../styles/addProduct.css";
 import { useRouter } from "next/navigation";
+import Navbar from "../components/navbar/page";
 
 export default function AddProduct() {
   const [file, setFile] = useState<File | any>(null);

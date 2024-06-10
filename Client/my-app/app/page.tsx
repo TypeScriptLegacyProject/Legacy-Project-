@@ -27,25 +27,49 @@ export default function Home() {
       })
       .catch((err) => {
         console.error(err);
+        toast.info("Item already in cart");
       });
   };
 
-  const wish = (id: any) => {
-    const data = {
-      UserId: user.id,
-      productId: id,
-    };
+  // const wish = (id: any) => {
+  //   const data = {
+  //     UserId: user.id,
+  //     productId: id,
+  //   };
 
-    axios
-      .post("http://localhost:4000/api/panier/usercart", data)
-      .then((res) => {
-        console.log(res);
-        toast.success("Item added to wishlist");
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  //   axios
+  //     .post("http://localhost:4000/api/panier/usercart", data)
+  //     .then((res) => {
+  //       console.log(res);
+  //       toast.success("Item added to wishlist");
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // };
+  const addToWishlist = (item: any,image:any,name:any,price:any) => {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    let itemExists = false;
+
+    for (let i = 0; i < wishlist.length; i++) {
+      if (wishlist[i].item === item) {
+        itemExists = true
+        break
+      }
+    }
+
+    if (!itemExists) {
+      wishlist.push({item,image,name,price});
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      toast.success("Item added to wishlist")
+    } else {
+      toast.info("Item already in wishlist")
+    }
+
+    console.log(wishlist);
   };
+
+
 
   useEffect(() => {
     const toastMessage = localStorage.getItem("toastMessage");
@@ -74,15 +98,17 @@ export default function Home() {
         console.error(err);
       });
 
-    axios
-      .get(`http://localhost:4000/api/products`)
-      .then((response) => {
-        setProd(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+      
+        axios.get(`http://localhost:4000/api/products`)
+          .then((response) => {
+            setProd(response.data);
+           
+            
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      },[])
 
   return (
     <div>
@@ -90,15 +116,12 @@ export default function Home() {
       <div style={{ display: "flex" }}>
         <div className="sideBar">
           <ul>
-            <li>Man's Clothing</li>
-            <li>Women's Clothing</li>
-            <li>Electronics</li>
-            <li>Medecine</li>
-            <li>Sport</li>
-            <li>Toys</li>
-            <li>Health And Beauty</li>
-            <li>Groceries</li>
-            <li>Pets</li>
+            <li onClick={()=>{}}>gaming</li>
+            <li onClick={()=>{}}>PCS</li>
+            <li onClick={()=>{}}>phones</li>
+            <li onClick={()=>{}}>kitchen</li>
+            <li onClick={()=>{}}>Sport</li>
+            <li onClick={()=>{}}>fishing</li>
           </ul>
         </div>
         <div style={{ flex: 1, padding: "20px" }}>
@@ -124,10 +147,10 @@ export default function Home() {
                     <p className="new">${el.price}</p>
                   </div>
                   <div className="items cart">
-                    <button className="button" onClick={() => addToPanier(el.id)}>
+                    <button className="button" >
                       ADD TO CART
                     </button>
-                    <span className="icon-heart2" onClick={() => wish(el.id)}>
+                    <span className="icon-heart2" onClick={()=>{addToWishlist(el.id,el.imgUrl,el.name,el.price)}}>
                       ❤️
                     </span>
                   </div>
@@ -164,7 +187,7 @@ export default function Home() {
                     <button className="button" onClick={() => addToPanier(el.id)}>
                       ADD TO CART
                     </button>
-                    <span className="icon-heart2" onClick={() => wish(el.id)}>
+                    <span className="icon-heart2" onClick={()=>{addToWishlist(el.id,el.imgUrl,el.name,el.price)}} >
                       ❤️
                     </span>
                   </div>
@@ -198,7 +221,7 @@ export default function Home() {
                     <button className="button" onClick={() => addToPanier(product.id)}>
                       ADD TO CART
                     </button>
-                    <span className="icon-heart2" onClick={() => wish(product.id)}>
+                    <span className="icon-heart2" onClick={()=>{addToWishlist(product.id,product.imgUrl,product.name,product.price)}}>
                       ❤️
                     </span>
                   </div>

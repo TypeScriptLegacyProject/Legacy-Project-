@@ -20,7 +20,7 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   overflow: hidden;
-  position: relative;
+  position: absolute;
 }
 
 .addProduct-title {
