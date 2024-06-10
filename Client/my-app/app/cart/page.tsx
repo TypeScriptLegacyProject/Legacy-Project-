@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/footer/page";
 import { error } from "console";
+import { Alert } from "react-bootstrap";
 
 export default function Panier() {
   const [sel3a, setSel3a] = useState<any[]>([]);
@@ -98,7 +99,8 @@ export default function Panier() {
   };
 
   const proceedToCheckout = () => {
-    localStorage.setItem("toastMessage", "Thank you for shopping with Exclusive! Your order is on its way.");
+   
+    alert("Thank you for shopping with Exclusive! Your order is on its way.")
     router.push("/");
   };
 

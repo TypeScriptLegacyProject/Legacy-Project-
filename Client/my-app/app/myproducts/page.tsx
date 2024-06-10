@@ -10,13 +10,16 @@ export default function allproducts(){
  const [sellerProducts, setSellerProducts] = useState<any>([]);
  const { seller } = useAuth();
  const router=useRouter()
+ 
 useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/seller/${seller.id}`)
+      .get(`http://localhost:4000/api/seller/prod/${seller.id}`)
       .then((res) => {
         console.log(res.data);
       setSellerProducts(res.data)
       console.log("kjefzkj",sellerProducts)
+      console.log(seller.id);
+      
 
       })
       .catch((error) => console.error(error));
@@ -27,7 +30,7 @@ useEffect(() => {
     <button onClick={()=>{router.push("/")}}>home</button>
     <button onClick={()=>{router.push("/addproduct")}}>add products</button>
     <div>
-    {sellerProducts.map((product:any) => (
+    {sellerProducts.map((product:any) => {return(
                 <li key={product.id} className="product-item">
                   <h2 className="product-name">{product.name}</h2>
                   <img src={product.imgUrl}
@@ -35,7 +38,7 @@ useEffect(() => {
                     className="product-image"
                   />
                 </li>
-              ))}
+              )})}
     </div>
     </>
   )
