@@ -19,11 +19,7 @@ export default function EditProfile ()  {
     const router= useRouter();
   
     useEffect(() => {
-      // const relode=sessionStorage.getItem("hasReloaded")
-      // if(!re){
-      //   sessionStorage.setItem("hasReloaded","true")
-      //   window.location.reload()
-      // }
+      
 
       const token = localStorage.getItem("token");
       if (token) {
@@ -73,14 +69,14 @@ export default function EditProfile ()  {
               <h4 onClick={() => router.push('/addproduct')}>Add Product</h4>
               <ul>
                 <li className="active">My Profile</li>
-                <li>Address Book</li>
+                
                
               </ul>
             </div>
             <div className="sidebar-section">
            </div>
             <div className="sidebar-section">
-              <h4 onClick={() => router.push('/add')}>My Wishlist</h4>
+              <h4 onClick={() => router.push('/myproducts')}>My products</h4>
             </div>
           </div>
           <div className="main-content">

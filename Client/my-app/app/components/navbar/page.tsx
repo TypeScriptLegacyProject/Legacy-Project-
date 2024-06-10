@@ -38,16 +38,16 @@ export default function Navbar() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="/about">About</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="/contact">Contact</a>
           </li>
           <li>
             <a href="/cart">Cart</a>
           </li>
           <li>
-            <a href="#">Wishlist</a>
+            <a href="/wishlist">Wishlist</a>
           </li>
           <li onClick={signOut}>
             <a>Log Out</a>
@@ -61,10 +61,10 @@ export default function Navbar() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="/about">About</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="/contact">Contact</a>
           </li>
           <li onClick={signOut}>
             <a>Log Out</a>
@@ -78,10 +78,10 @@ export default function Navbar() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="/about">About</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="/contact">Contact</a>
           </li>
           <li>
             <a href="/login">Login</a>

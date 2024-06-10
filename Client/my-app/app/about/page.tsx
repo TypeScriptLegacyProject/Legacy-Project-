@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import "../styles/about.css";
+import Navbar from "../components/navbar/page";
 export default function About() {
   const [file, setPhoto] = useState<File | null>(null);
   const [file2, setPhoto2] = useState<File | null>(null);
@@ -36,6 +37,7 @@ export default function About() {
 
   return (
     <div>
+    <Navbar/>
       <div className="our-story-container">
         <div className="breadcrumb">
           <a href="/">Home</a> / <span>About</span>
