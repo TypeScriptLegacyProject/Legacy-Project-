@@ -18,6 +18,8 @@ export default function AddProduct() {
   const [price, setPrice] = useState<string>("");
   const router = useRouter();
   const { seller } = useAuth(); 
+
+  
   const uploadImage = () => {
     const form = new FormData();
     form.append("file", file);
