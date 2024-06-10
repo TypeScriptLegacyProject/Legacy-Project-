@@ -69,6 +69,7 @@ export default function AuthProvider({ children }: any) {
     localStorage.removeItem("user");
     localStorage.removeItem("seller");
     localStorage.removeItem("admin");
+    localStorage.removeItem("wishlist");
     toast.success("Logged out successfully");
     router.push("/login");
   };
