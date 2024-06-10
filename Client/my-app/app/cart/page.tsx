@@ -7,6 +7,7 @@ import Modal from "../components/confirmation/page";
 import "../styles/cart.css";
 import { useEffect, useState } from "react";
 import Footer from "../components/footer/page";
+import Image from "next/image"
 
 export default function Panier() {
   const [sel3a, setSel3a] = useState<any[]>([]);
