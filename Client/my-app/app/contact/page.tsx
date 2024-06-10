@@ -1,10 +1,13 @@
 
 import Image from 'next/image';
 import '../styles/contact.css';
+import Navbar from '../components/navbar/page';
+
 
 export default function Contact() {
   return (
     <div>
+      <Navbar/>
       <div className="contact-us-container">
         <nav className="breadcrumb">
           <span>Home</span> / <span> <strong>Contact</strong></span>
@@ -55,6 +58,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+     
     </div>
   );
 }

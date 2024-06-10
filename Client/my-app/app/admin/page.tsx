@@ -16,6 +16,10 @@ import {
   LineElement,
   Title,
 } from "chart.js";
+import { useAuth } from "../auth";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 ChartJS.register(
   ArcElement,
@@ -62,6 +66,18 @@ export default function getall() {
     "#9966FF", // kitchen
     "#FF9F40", // fishing
   ];
+  const { logOut } = useAuth();
+  const router = useRouter();
+
+
+
+  const signOut = () => {
+    
+    logOut();
+   
+    router.push("/login");
+
+  };
 
   const toggleDropdown = (id: number) => {
     setShowDropdown((prevState) => ({ ...prevState, [id]: !prevState[id] }));
@@ -523,6 +539,9 @@ export default function getall() {
         >
           Charts
         </h2>
+        <span >
+              <img src="https://res.cloudinary.com/dcyeimdps/image/upload/v1718025527/texkacjf13p0jn2vylst.png" alt="Logout Icon" className="icon-image" width={30} onClick={()=>{signOut()}} />
+              </span>
       </div>
       <div className="dashboard">
         <h1>{view}</h1>
@@ -549,6 +568,7 @@ export default function getall() {
         title={modalTitle}
         message={modalMessage}
       />
+       <ToastContainer />
     </div>
   );
 }
