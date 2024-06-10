@@ -3,22 +3,23 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f4f4f4;
+    background-color: #e6ccff; /* Light purple background */
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background-color: #000;
+    background-color: #800080; /* Purple background */
     color: #fff;
 }
 
 .sideBar {
-    background-color: #f8f8f8;
+    background-color: #fff; /* White background for sidebar */
     width: 200px;
     padding: 20px;
     margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sideBar ul {
@@ -31,12 +32,12 @@ body {
     padding: 10px 0;
     cursor: pointer;
     font-weight: bold;
-    color: #333;
+    color: #800080; /* Purple text */
     transition: color 0.3s;
 }
 
 .sideBar ul li:hover {
-    color: #ff0000;
+    color: #660066; /* Darker purple on hover */
 }
 
 .grid-container {
@@ -51,18 +52,16 @@ body {
     width: 100%;
     height: 300px;
     overflow: hidden;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #ddd;
     border-radius: 10px;
     background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .container:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .overlay {
@@ -71,7 +70,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(128, 0, 128, 0.8); /* Semi-transparent purple overlay */
     color: #fff;
     opacity: 0;
     transition: opacity 0.3s;
@@ -93,6 +92,7 @@ body {
 .items.head p {
     font-size: 18px;
     margin: 0;
+    font-weight: bold;
 }
 
 .items.price p {
@@ -121,7 +121,7 @@ body {
 h2 {
     text-align: center;
     margin: 40px 0 20px;
-    color: #333;
+    color: #800080; /* Purple text */
 }
 
 .button {
@@ -130,7 +130,7 @@ h2 {
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background-color: #007bff;
+    background-color: #800080; /* Purple button */
     border: none;
     border-radius: 5px;
     text-align: center;
@@ -140,20 +140,21 @@ h2 {
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #660066; /* Darker purple on hover */
     transform: scale(1.05);
 }
 
 .button:active {
-    background-color: #004085;
+    background-color: #4b004b; /* Even darker purple on active */
     transform: scale(0.95);
 }
 
 .footer {
-    background-color: #000;
+    background-color: #800080; /* Purple background */
     color: #fff;
     padding: 20px;
     text-align: center;
+    margin-top: 20px;
 }
 
 .footer a {
@@ -172,6 +173,11 @@ h2 {
     }
 }
 
-.icon-heart2{
+.icon-heart2 {
     margin-left: 15px;
+    cursor: pointer;
+}
+
+.icon-heart2:hover {
+    color: #ff0000; /* Red heart on hover */
 }
