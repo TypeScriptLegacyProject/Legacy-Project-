@@ -6,8 +6,10 @@ import Navbar from "../components/navbar/page";
 import Modal from "../components/confirmation/page";
 import "../styles/cart.css";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/footer/page";
-import Image from "next/image"
+
 
 export default function Panier() {
   const [sel3a, setSel3a] = useState<any[]>([]);
@@ -17,9 +19,29 @@ export default function Panier() {
   const [modalAction, setModalAction] = useState<() => void>(() => {});
   const [modalTitle, setModalTitle] = useState<string>("");
   const [modalMessage, setModalMessage] = useState<string>("");
+  const [coupon, setcoupon] = useState<string>("");
+  const [chance, setchance] = useState<boolean>(false)
 
   const { user } = useAuth();
   const router = useRouter();
+
+  const remise=()=>{
+ 
+    if(coupon!=="bigBOSS"){
+      toast.error(" wrong coupon ")
+     
+    }else if(!chance && coupon==="bigBOSS"){
+      setTotal(total/2)
+      toast.success("coupon activated")
+      setchance(true)
+    }
+    else{
+      toast.error("coupon already activated")
+    }
+}
+
+
+  
 
   useEffect(() => {
     axios
@@ -123,7 +145,7 @@ export default function Panier() {
                     )
                   }
                 >
-                  X
+                  <button className="return-button">remove</button>
                 </td>
               </tr>
             ))}
@@ -133,8 +155,8 @@ export default function Panier() {
           Return To Shop
         </button>
         <div className="coupon-container">
-          <input type="text" placeholder="Coupon Code" className="coupon-input" />
-          <button className="apply-coupon">Apply Coupon</button>
+          <input type="text" placeholder="Coupon Code" className="coupon-input" onChange={(e)=>{setcoupon(e.target.value)}}/>
+          <button className="apply-coupon" onClick={()=>{remise()}}>Apply Coupon</button>
         </div>
         <div className="cart-total">
           <h3>Cart Total</h3>
@@ -154,6 +176,7 @@ export default function Panier() {
         title={modalTitle}
         message={modalMessage}
       />
+      <ToastContainer />
     </div>
   );
 }
