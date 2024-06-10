@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./components/navbar/page";
 import { useAuth } from "./auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./styles/home.css";
 
 export default function Home() {
@@ -21,11 +23,13 @@ export default function Home() {
       .post("http://localhost:4000/api/panier/usercart", data)
       .then((res) => {
         console.log(res);
+        toast.success("Item added to cart");
       })
       .catch((err) => {
         console.error(err);
       });
   };
+
   const wish = (id: any) => {
     const data = {
       UserId: user.id,
@@ -36,30 +40,40 @@ export default function Home() {
       .post("http://localhost:4000/api/panier/usercart", data)
       .then((res) => {
         console.log(res);
+        toast.success("Item added to wishlist");
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-
   useEffect(() => {
+    const toastMessage = localStorage.getItem("toastMessage");
+    if (toastMessage) {
+      toast.success(toastMessage);
+      localStorage.removeItem("toastMessage");
+    }
+
     axios
-      .get(`http://localhost:4000/api/products/condition/best seller`)
+      .get(`http://localhost:4000/api/products/condition/Best Seller`)
       .then((response) => {
+        console.log("Best Seller Products:", response.data);
         setBest(response.data);
       })
       .catch((err) => {
         console.error(err);
       });
+
     axios
-      .get(`http://localhost:4000/api/products/condition/flash sells`)
+      .get(`http://localhost:4000/api/products/condition/Flash Sales`)
       .then((response) => {
+        console.log("Flash Sales Products:", response.data);
         setFlash(response.data);
       })
       .catch((err) => {
         console.error(err);
       });
+
     axios
       .get(`http://localhost:4000/api/products`)
       .then((response) => {
@@ -73,7 +87,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: "flex" }}>
         <div className="sideBar">
           <ul>
             <li>Man's Clothing</li>
@@ -87,7 +101,7 @@ export default function Home() {
             <li>Pets</li>
           </ul>
         </div>
-        <div style={{ flex: 1, padding: '20px' }}>
+        <div style={{ flex: 1, padding: "20px" }}>
           <h2>Flash Sales</h2>
           <div className="grid-container">
             {flash.map((el) => (
@@ -95,8 +109,10 @@ export default function Home() {
                 <div
                   style={{
                     background: `url(${el.imgUrl})`,
-                    backgroundSize: 'cover',
-                    height: '200px'
+                    backgroundSize: "cover",
+                    height: "200px",
+                    width: "100%",
+                    borderRadius: "10px",
                   }}
                 ></div>
                 <div className="overlay">
@@ -108,10 +124,13 @@ export default function Home() {
                     <p className="new">${el.price}</p>
                   </div>
                   <div className="items cart">
-                    <button className="button" onClick={() => addToPanier(el.id)}>ADD TO CART</button>
-                    <span className="icon-heart2" onClick={() => wish(el.id)}>❤️</span>
+                    <button className="button" onClick={() => addToPanier(el.id)}>
+                      ADD TO CART
+                    </button>
+                    <span className="icon-heart2" onClick={() => wish(el.id)}>
+                      ❤️
+                    </span>
                   </div>
-                  
                 </div>
               </div>
             ))}
@@ -127,8 +146,10 @@ export default function Home() {
                 <div
                   style={{
                     background: `url(${el.imgUrl})`,
-                    backgroundSize: 'cover',
-                    height: '200px'
+                    backgroundSize: "cover",
+                    height: "200px",
+                    width: "100%",
+                    borderRadius: "10px",
                   }}
                 ></div>
                 <div className="overlay">
@@ -140,10 +161,13 @@ export default function Home() {
                     <p className="new">${el.price}</p>
                   </div>
                   <div className="items cart">
-                    <button className="button" onClick={() => addToPanier(el.id)}>ADD TO CART</button>
-                    <span className="icon-heart2" onClick={() => addToPanier(el.id)}>❤️</span>
+                    <button className="button" onClick={() => addToPanier(el.id)}>
+                      ADD TO CART
+                    </button>
+                    <span className="icon-heart2" onClick={() => wish(el.id)}>
+                      ❤️
+                    </span>
                   </div>
-                 
                 </div>
               </div>
             ))}
@@ -156,8 +180,10 @@ export default function Home() {
                 <div
                   style={{
                     background: `url(${product.imgUrl})`,
-                    backgroundSize: 'cover',
-                    height: '200px'
+                    backgroundSize: "cover",
+                    height: "200px",
+                    width: "100%",
+                    borderRadius: "10px",
                   }}
                 ></div>
                 <div className="overlay">
@@ -169,16 +195,20 @@ export default function Home() {
                     <p className="new">${product.price}</p>
                   </div>
                   <div className="items cart">
-                    <button className="button" onClick={() => addToPanier(product.id)}>ADD TO CART</button>
-                    <span className="icon-heart2" onClick={() => addToPanier(product.id)}>❤️</span>
+                    <button className="button" onClick={() => addToPanier(product.id)}>
+                      ADD TO CART
+                    </button>
+                    <span className="icon-heart2" onClick={() => wish(product.id)}>
+                      ❤️
+                    </span>
                   </div>
-                  
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

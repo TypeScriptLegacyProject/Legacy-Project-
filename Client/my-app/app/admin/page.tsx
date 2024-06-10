@@ -40,6 +40,9 @@ export default function getall() {
   const [showDropdown, setShowDropdown] = useState<{ [key: number]: boolean }>(
     {}
   );
+  const [showConditionDropdown, setShowConditionDropdown] = useState<{
+    [key: number]: boolean;
+  }>({});
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalAction, setModalAction] = useState<() => void>(() => {});
   const [modalTitle, setModalTitle] = useState<string>("");
@@ -62,6 +65,13 @@ export default function getall() {
 
   const toggleDropdown = (id: number) => {
     setShowDropdown((prevState) => ({ ...prevState, [id]: !prevState[id] }));
+  };
+
+  const toggleConditionDropdown = (id: number) => {
+    setShowConditionDropdown((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
   };
 
   const allCustomer = async () => {
@@ -136,6 +146,17 @@ export default function getall() {
         email: user.email,
       });
       allCustomer();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateCondition = async (productId: number, condition: string) => {
+    try {
+      await axios.put(`http://localhost:4000/api/products/${productId}`, {
+        condition: condition,
+      });
+      product();
     } catch (err) {
       console.log(err);
     }
@@ -288,6 +309,7 @@ export default function getall() {
                 <th>Product Name</th>
                 <th>Price</th>
                 <th>Category</th>
+                <th>Condition</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -298,6 +320,7 @@ export default function getall() {
                   <td>{e.name}</td>
                   <td>{e.price}</td>
                   <td>{e.category}</td>
+                  <td>{e.condition || "null"}</td>
                   <td>
                     <div className="action-dropdown">
                       <button
@@ -319,6 +342,35 @@ export default function getall() {
                           >
                             Delete
                           </button>
+                          <button onClick={() => toggleConditionDropdown(e.id)}>
+                            Set Condition
+                          </button>
+                          {showConditionDropdown[e.id] && (
+                            <div className="dropdown-content">
+                              <button
+                                onClick={() =>
+                                  confirmAction(
+                                    () => updateCondition(e.id, "Flash Sales"),
+                                    "Confirm Update Condition",
+                                    `Are you sure you want to set the condition of ${e.name} to Flash Sales?`
+                                  )
+                                }
+                              >
+                                Flash Sales
+                              </button>
+                              <button
+                                onClick={() =>
+                                  confirmAction(
+                                    () => updateCondition(e.id, "Best Seller"),
+                                    "Confirm Update Condition",
+                                    `Are you sure you want to set the condition of ${e.name} to Best Seller?`
+                                  )
+                                }
+                              >
+                                Best Seller
+                              </button>
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
@@ -338,11 +390,11 @@ export default function getall() {
           <table>
             <thead>
               <tr>
-                <th>Name Product</th>
-                <th>Name User</th>
-                <th>Email User</th>
-                <th>Price Product</th>
-                <th>Category Product</th>
+                <th>Product Name</th>
+                <th> User Name</th>
+                <th> User Email</th>
+                <th> Product Price</th>
+                <th> Product Category</th>
                 <th>Action</th>
               </tr>
             </thead>
