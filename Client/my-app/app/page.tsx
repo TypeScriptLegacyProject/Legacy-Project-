@@ -31,22 +31,7 @@ export default function Home() {
       });
   };
 
-  // const wish = (id: any) => {
-  //   const data = {
-  //     UserId: user.id,
-  //     productId: id,
-  //   };
 
-  //   axios
-  //     .post("http://localhost:4000/api/panier/usercart", data)
-  //     .then((res) => {
-  //       console.log(res);
-  //       toast.success("Item added to wishlist");
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // };
   const addToWishlist = (item: any,image:any,name:any,price:any) => {
     const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
     let itemExists = false;
@@ -150,7 +135,7 @@ export default function Home() {
                     <p className="new">${el.price}</p>
                   </div>
                   <div className="items cart">
-                    <button className="button" >
+                    <button className="button" onClick={() => addToPanier(el.id)} >
                       ADD TO CART
                     </button>
                     <span className="icon-heart2" onClick={()=>{addToWishlist(el.id,el.imgUrl,el.name,el.price)}}>
