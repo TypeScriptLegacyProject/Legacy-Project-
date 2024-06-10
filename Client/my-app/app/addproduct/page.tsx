@@ -7,7 +7,7 @@ import "../styles/addProduct.css";
 import { useRouter } from "next/navigation";
 import Navbar from "../components/navbar/page";
 
-;
+import { useAuth } from "../auth"
 
 export default function AddProduct() {
   const [file, setFile] = useState<File | any>(null);
@@ -17,7 +17,7 @@ export default function AddProduct() {
   const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<string>("");
   const router = useRouter();
-
+  const { seller } = useAuth(); 
   const uploadImage = () => {
     const form = new FormData();
     form.append("file", file);
@@ -41,11 +41,12 @@ export default function AddProduct() {
       description: description,
       price: price,
       imgUrl: url,
+      SellerId:seller.id
     })
     .then((res) => {
       console.log("adding", res);
-      alert("you adding")
-     router.push("/")
+      alert("your product has been added")
+     router.push("/myproducts")
     })
     .catch((err) => {
       console.log(err);
