@@ -5,9 +5,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../auth";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Modal from "../components/confirmation/page";
 import '../styles/myproducts.css';
-import '../styles/modal.css';
 
 export default function AllProducts() {
   const { seller } = useAuth();
@@ -20,10 +18,6 @@ export default function AllProducts() {
   const [file, setFile] = useState<File | any>(null);
   const [url, setUrl] = useState<string>("");
   const [id, setId] = useState<Number>(0);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [modalAction, setModalAction] = useState<() => void>(() => {});
-  const [modalTitle, setModalTitle] = useState<string>("");
-  const [modalMessage, setModalMessage] = useState<string>("");
 
   const router = useRouter();
 
@@ -83,18 +77,6 @@ export default function AllProducts() {
     dataseller();
   }, []);
 
-  const confirmAction = (action: () => void, title: string, message: string) => {
-    setModalAction(() => action);
-    setModalTitle(title);
-    setModalMessage(message);
-    setShowModal(true);
-  };
-
-  const handleConfirm = () => {
-    modalAction();
-    setShowModal(false);
-  };
-
   const changeView = () => {
     if (view === "allproducts") {
       return (
@@ -107,7 +89,7 @@ export default function AllProducts() {
                 alt="product"
                 className="product-image"
               />
-              <button onClick={() => confirmAction(() => del(product.id), "Confirm Delete", `Are you sure you want to delete ${product.name}?`)}>Delete</button>
+              <button onClick={() => del(product.id)}>Delete</button>
               <button onClick={() => { setView("update"); setId(product.id); setName(product.name); setCategory(product.category); setDescription(product.description); setPrice(product.price); setUrl(product.imgUrl); }}>
                 Update
               </button>
@@ -212,7 +194,7 @@ export default function AllProducts() {
           </button>
           <button
             className="updateproduct-button"
-            onClick={() => confirmAction(() => update(id), "Confirm Update", `Are you sure you want to update ${name}?`)}
+            onClick={() => update(id)}
           >
             Update
           </button>
@@ -231,13 +213,6 @@ export default function AllProducts() {
       </header>
       <h1 className="title">My Products</h1>
       {changeView()}
-      <Modal
-        show={showModal}
-        onClose={() => setShowModal(false)}
-        onConfirm={handleConfirm}
-        title={modalTitle}
-        message={modalMessage}
-      />
     </>
   );
 }

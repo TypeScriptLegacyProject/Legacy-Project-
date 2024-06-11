@@ -8,17 +8,17 @@ import "react-toastify/dist/ReactToastify.css";
 import "../styles/editbuyerprofile.css";
 import { useRouter } from "next/navigation";
 export default function EditProfile ()  {
-    const [firstname, setFirstname] = useState<string>("");
-    const [lastname, setLastname] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [address, setAddress] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [newpassword, setNewpassword] =useState<string>("");
-    const [confirmpassword, setConfirmpassword] =useState<string>("");
-    const [errorMessage, setErrorMessage] =useState<string>(""); 
-    const [refresh, setRefresh] = useState(false);
-    const [welcome, setWelcome] =useState<string>("");
-    const router= useRouter();
+  const [firstname, setFirstname] = useState<string>("");
+  const [lastname, setLastname] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [newpassword, setNewpassword] =useState<string>("");
+  const [confirmpassword, setConfirmpassword] =useState<string>("");
+  const [errorMessage, setErrorMessage] =useState<string>(""); 
+  const [refresh, setRefresh] = useState(false);
+  const [welcome, setWelcome] =useState<string>("");
+  const router= useRouter();
   
     useEffect(() => {
       const token = localStorage.getItem("token");
@@ -63,7 +63,7 @@ export default function EditProfile ()  {
         <div className="container">
           <div className="sidebar">
             <div className="sidebar-section">
-              {/* <h4 onClick={() => router.push('/add')}>Add Product</h4> */}
+            
               <ul>
                 <li className="active">My Profile</li>
                 <li>Address Book</li>
