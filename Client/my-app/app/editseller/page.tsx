@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/navbar/page";
 import Footer from "../components/footer/page";
 import axios from "axios"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/editseller.css";
 import { useRouter } from "next/navigation";
 export default function EditProfile ()  {
@@ -51,10 +53,11 @@ export default function EditProfile ()  {
           console.log(response.data);
           setRefresh(!refresh);
           setWelcome(`Welcome ${response.data.firstname}!`);
+          toast.success("changes saved successfully");
         })
         .catch((error:any) => {
           console.error(error);
-          alert("An error occurred while updating the profile.");
+           toast.error("wrong password or wrong email");
         });
     };
   
@@ -142,7 +145,7 @@ export default function EditProfile ()  {
             </form>
           </div>
         </div>
-      
+        <ToastContainer />
       </div>
     );
   };

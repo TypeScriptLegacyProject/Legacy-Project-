@@ -6,7 +6,7 @@
 }
 
 #topNav .midleText {
-  color: white;
+  color: rgb(195, 0, 255);  
   font-size: 16px;
   font-weight: 400;
   text-align: center;
@@ -22,9 +22,9 @@
   position: sticky;
   top: 0;
   z-index: 99;
-  background-color: white;
+  background-color: rgba(166, 71, 229, 0.715);
   height: 70px;
-  width: 1300px;
+  width: 1440px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -188,3 +188,4 @@
     gap: 10px;
   }
 }
+
