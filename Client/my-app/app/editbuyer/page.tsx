@@ -3,20 +3,22 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/navbar/page";
 import Footer from "../components/footer/page";
 import axios from "axios"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/editbuyerprofile.css";
 import { useRouter } from "next/navigation";
 export default function EditProfile ()  {
-    const [firstname, setFirstname] = useState<string>("");
-    const [lastname, setLastname] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [address, setAddress] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [newpassword, setNewpassword] =useState<string>("");
-    const [confirmpassword, setConfirmpassword] =useState<string>("");
-    const [errorMessage, setErrorMessage] =useState<string>(""); 
-    const [refresh, setRefresh] = useState(false);
-    const [welcome, setWelcome] =useState<string>("");
-    const router= useRouter();
+  const [firstname, setFirstname] = useState<string>("");
+  const [lastname, setLastname] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [newpassword, setNewpassword] =useState<string>("");
+  const [confirmpassword, setConfirmpassword] =useState<string>("");
+  const [errorMessage, setErrorMessage] =useState<string>(""); 
+  const [refresh, setRefresh] = useState(false);
+  const [welcome, setWelcome] =useState<string>("");
+  const router= useRouter();
   
     useEffect(() => {
       const token = localStorage.getItem("token");
@@ -45,10 +47,11 @@ export default function EditProfile ()  {
           console.log(response.data);
           setRefresh(!refresh);
           setWelcome(`Welcome ${response.data.firstname}!`);
+          toast.success("changes saved successfully");
         })
         .catch((error:any) => {
           console.error(error);
-          alert("An error occurred while updating the profile.");
+          toast.error("wrong password or wrong email");
         });
     };
   
@@ -60,7 +63,7 @@ export default function EditProfile ()  {
         <div className="container">
           <div className="sidebar">
             <div className="sidebar-section">
-              {/* <h4 onClick={() => router.push('/add')}>Add Product</h4> */}
+            
               <ul>
                 <li className="active">My Profile</li>
                 <li>Address Book</li>
@@ -136,7 +139,7 @@ export default function EditProfile ()  {
             </form>
           </div>
         </div>
-    
+        <ToastContainer />
       </div>
     );
   };

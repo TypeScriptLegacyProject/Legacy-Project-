@@ -1,4 +1,4 @@
-/* allproducts.css */
+/* myproducts.css */
 
 body {
     font-family: 'Arial', sans-serif;
@@ -6,17 +6,17 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-header {
+  }
+  
+  header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     background-color: #800080;
     color: #fff;
-}
-
-header button {
+  }
+  
+  header button {
     background-color: #fff;
     color: #800080;
     border: 1px solid #800080;
@@ -25,29 +25,29 @@ header button {
     border-radius: 5px;
     font-size: 16px;
     transition: background-color 0.3s, color 0.3s;
-}
-
-header button:hover {
+  }
+  
+  header button:hover {
     background-color: #800080;
     color: #fff;
-}
-
-.title {
+  }
+  
+  .title {
     text-align: center;
     font-size: 32px;
     color: #800080;
     margin-top: 20px;
-}
-
-.product-list {
+  }
+  
+  .product-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     padding: 20px;
-}
-
-.product-item {
+  }
+  
+  .product-item {
     list-style: none;
     background-color: #fff;
     padding: 20px;
@@ -56,22 +56,22 @@ header button:hover {
     width: 300px;
     text-align: center;
     position: relative;
-}
-
-.product-name {
+  }
+  
+  .product-name {
     font-size: 20px;
     color: #800080;
     margin-bottom: 10px;
-}
-
-.product-image {
+  }
+  
+  .product-image {
     width: 100%;
     height: auto;
     border-radius: 5px;
     margin-bottom: 10px;
-}
-
-.product-item button {
+  }
+  
+  .product-item button {
     background-color: #800080;
     color: #fff;
     border: none;
@@ -81,25 +81,25 @@ header button:hover {
     font-size: 14px;
     margin: 5px 0;
     transition: background-color 0.3s;
-}
-
-.product-item button:hover {
+  }
+  
+  .product-item button:hover {
     background-color: #660066;
-}
-
-.updateproduct-fieldset {
+  }
+  
+  .updateproduct-fieldset {
     margin: 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.updateproduct-label {
+  }
+  
+  .updateproduct-label {
     margin-bottom: 5px;
     color: #800080;
-}
-
-.updateproduct-input, .updateproduct-select, .updateproduct-textarea {
+  }
+  
+  .updateproduct-input, .updateproduct-select, .updateproduct-textarea {
     width: 80%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -108,25 +108,25 @@ header button:hover {
     outline: none;
     margin-bottom: 10px;
     transition: border-color 0.3s;
-}
-
-.updateproduct-input:focus, .updateproduct-select:focus, .updateproduct-textarea:focus {
+  }
+  
+  .updateproduct-input:focus, .updateproduct-select:focus, .updateproduct-textarea:focus {
     border-color: #800080;
-}
-
-.updateproduct-upload-label {
+  }
+  
+  .updateproduct-upload-label {
     margin-top: 20px;
-}
-
-.updateproduct-image-preview {
+  }
+  
+  .updateproduct-image-preview {
     margin: 20px 0;
-}
-
-.updateproduct-uploaded-image {
+  }
+  
+  .updateproduct-uploaded-image {
     border-radius: 5px;
-}
-
-.updateproduct-button {
+  }
+  
+  .updateproduct-button {
     background-color: #800080;
     color: #fff;
     border: none;
@@ -136,94 +136,19 @@ header button:hover {
     font-size: 14px;
     margin: 10px;
     transition: background-color 0.3s;
-}
-
-.updateproduct-button:hover {
+  }
+  
+  .updateproduct-button:hover {
     background-color: #660066;
-}
-
-.updateproduct-upload-button {
+  }
+  
+  .updateproduct-upload-button {
     background-color: #fff;
     color: #800080;
     border: 1px solid #800080;
-}
-
-.updateproduct-upload-button:hover {
+  }
+  
+  .updateproduct-upload-button:hover {
     background-color: #800080;
     color: #fff;
-}
-
-/* modal.css */
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-}
-
-.modal-container h2 {
-    margin-top: 0;
-    color: #800080;
-}
-
-.modal-container p {
-    margin: 20px 0;
-    color: #333;
-}
-
-.modal-buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.modal-buttons button {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.modal-buttons button:hover {
-    background-color: #ddd;
-}
-
-.modal-buttons button:first-child {
-    background-color: #fff;
-    color: #800080;
-    border: 1px solid #800080;
-}
-
-.modal-buttons button:first-child:hover {
-    background-color: #800080;
-    color: #fff;
-}
-
-.modal-buttons button:last-child {
-    background-color: #800080;
-    color: #fff;
-}
-
-.modal-buttons button:last-child:hover {
-    background-color: #660066;
-}
+  }
