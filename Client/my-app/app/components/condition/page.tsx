@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 export default function condition({ show, onClose, onConfirm, title, productId }) {
   const [condition, setCondition] = useState("");
 
-  const handleConfirm = () => {
+  const Confirm = () => {
     onConfirm(productId, condition);
   };
 
@@ -37,7 +37,7 @@ export default function condition({ show, onClose, onConfirm, title, productId }
           </label>
         </div>
         <div className="modal-actions">
-          <button onClick={handleConfirm}>Confirm</button>
+          <button onClick={Confirm}>Confirm</button>
           <button onClick={onClose}>Cancel</button>
         </div>
       </div>

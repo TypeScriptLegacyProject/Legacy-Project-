@@ -79,15 +79,33 @@ export default function getall() {
 
   };
 
-  const toggleDropdown = (id: number) => {
-    setShowDropdown((prevState) => ({ ...prevState, [id]: !prevState[id] }));
+  const dropDown = (id: number) => {
+    if (showDropdown[id]) {
+      setShowDropdown((previousDDState) => ({
+        ...previousDDState,
+        [id]: false,
+      }));
+    } else {
+      setShowDropdown((previousDDState) => ({
+        ...previousDDState,
+        [id]: true,
+      }));
+    }
   };
 
-  const toggleConditionDropdown = (id: number) => {
-    setShowConditionDropdown((prevState) => ({
-      ...prevState,
-      [id]: !prevState[id],
-    }));
+  // this function toggles the visibility of a dropdown menu based on  given id
+  const conditionDropdown = (id: number) => {
+    if (showConditionDropdown[id]) {
+      setShowConditionDropdown((previousState) => ({
+        ...previousState,
+        [id]: false,
+      }));
+    } else {
+      setShowConditionDropdown((previousState) => ({
+        ...previousState,
+        [id]: true,
+      }));
+    }
   };
 
   const allCustomer = async () => {
@@ -189,26 +207,26 @@ export default function getall() {
     setShowModal(true);
   };
 
-  const handleConfirm = () => {
+  const Confirm = () => {
     modalAction();
     setShowModal(false);
   };
 
   const filteredCustomers = [...datauser, ...dataseller].filter((user) => {
-    const matchesSearch = user.username
+    const searchedInput = user.username
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
-    const matchesRole = filterRole === "all" || user.role === filterRole;
-    return matchesSearch && matchesRole;
+    const searchedInputRole = filterRole === "all" || user.role === filterRole;
+    return searchedInput && searchedInputRole;
   });
 
   const filteredProducts = dataprodactus.filter((product) => {
-    const matchesSearch = product.name
+    const searchedInput = product.name
       .toLowerCase()
       .includes(searchProduct.toLowerCase());
-    const matchesCategory =
+    const searchedCat =
       filterCategory === "all" || product.category === filterCategory;
-    return matchesSearch && matchesCategory;
+    return searchedInput && searchedCat;
   });
 
   const changeView = () => {
@@ -253,7 +271,7 @@ export default function getall() {
                     <div className="action-dropdown">
                       <button
                         className="dropbtn"
-                        onClick={() => toggleDropdown(e.id)}
+                        onClick={() => dropDown(e.id)}
                       >
                         ⋯
                       </button>
@@ -341,7 +359,7 @@ export default function getall() {
                     <div className="action-dropdown">
                       <button
                         className="dropbtn"
-                        onClick={() => toggleDropdown(e.id)}
+                        onClick={() => dropDown(e.id)}
                       >
                         ⋯
                       </button>
@@ -358,7 +376,7 @@ export default function getall() {
                           >
                             Delete
                           </button>
-                          <button onClick={() => toggleConditionDropdown(e.id)}>
+                          <button onClick={() => conditionDropdown(e.id)}>
                             Set Condition
                           </button>
                           {showConditionDropdown[e.id] && (
@@ -432,7 +450,7 @@ export default function getall() {
                         <div className="action-dropdown">
                           <button
                             className="dropbtn"
-                            onClick={() => toggleDropdown(e.id)}
+                            onClick={() => dropDown(e.id)}
                           >
                             ⋯
                           </button>
@@ -564,7 +582,7 @@ export default function getall() {
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
-        onConfirm={handleConfirm}
+        onConfirm={Confirm}
         title={modalTitle}
         message={modalMessage}
       />
