@@ -66,6 +66,12 @@ export default function Navbar() {
           <li>
             <a href="/contact">Contact</a>
           </li>
+          <li>
+            <a href="/addproduct">add product</a>
+          </li>
+          <li>
+            <a onClick={()=>router.push('/myproducts')}>my products</a>
+          </li>
           <li onClick={signOut}>
             <a>Log Out</a>
           </li>
