@@ -98,7 +98,8 @@ export default function Panier() {
   };
 
   const proceedToCheckout = () => {
-    localStorage.setItem("toastMessage", "Thank you for shopping with Exclusive! Your order is on its way.");
+   
+    alert("Thank you for shopping with Exclusive! Your order is on its way.")
     router.push("/");
   };
 

@@ -7,7 +7,7 @@ import "../styles/addProduct.css";
 import { useRouter } from "next/navigation";
 import Navbar from "../components/navbar/page";
 
-;
+import { useAuth } from "../auth";
 
 export default function AddProduct() {
   const [file, setFile] = useState<File | any>(null);
@@ -17,11 +17,12 @@ export default function AddProduct() {
   const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<string>("");
   const router = useRouter();
+  const { seller } = useAuth();
 
   const uploadImage = () => {
     const form = new FormData();
     form.append("file", file);
-    form.append("upload_preset", "exclusive") ;
+    form.append("upload_preset", "exclusive");
 
     axios
       .post("https://api.cloudinary.com/v1_1/dcyeimdps/image/upload", form)
@@ -35,30 +36,39 @@ export default function AddProduct() {
   };
 
   const adding = () => {
-    axios.post(`http://localhost:4000/api/products`, {
-      name: name,
-      category: category,
-      description: description,
-      price: price,
-      imgUrl: url,
-    })
-    .then((res) => {
-      console.log("adding", res);
-      alert("you adding")
-     router.push("/")
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    axios
+      .post(`http://localhost:4000/api/products`, {
+        name: name,
+        category: category,
+        description: description,
+        price: price,
+        imgUrl: url,
+        SellerId: seller.id,
+      })
+      .then((res) => {
+        console.log("adding", res);
+        alert("Your product has been added");
+        router.push("/myproducts");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-   
-   
     <div className="addProduct-container">
-
-      <h2 className="addProduct-title"> <button className="returnn" onClick={()=>{router.push("/")}}>home</button> Create New Product For Sale <button  className="myprod" onClick={()=>{router.push("myproducts")}}>my products</button></h2>
-      <p className="addProduct-subtitle">You can add product over here</p>
+      <div className="header-row">
+        <button className="header-button" onClick={() => router.push("/")}>
+          Home
+        </button>
+        <h2 className="addProduct-title">
+          Create New Product For Sale
+        </h2>
+        <button className="header-button" onClick={() => router.push("/myproducts")}>
+          My Products
+        </button>
+      </div>
+      <p className="addProduct-subtitle">You can add a product over here</p>
       <div className="addProduct-content">
         <div className="addProduct-left">
           <form className="addProduct-form">
@@ -177,7 +187,5 @@ export default function AddProduct() {
         </div>
       </div>
     </div>
-  
-
   );
 }
