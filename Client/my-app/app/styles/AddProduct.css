@@ -8,8 +8,10 @@ body {
   background-color: #e6ccff;
 }
 
+
 .addProduct-container {
   width: 90%;
+
   max-width: 1200px;
   max-height: 80vh;
   padding: 2rem;
@@ -21,6 +23,8 @@ body {
   gap: 1.5rem;
   overflow: hidden;
   position: absolute;
+
+ 
 }
 
 .addProduct-title {

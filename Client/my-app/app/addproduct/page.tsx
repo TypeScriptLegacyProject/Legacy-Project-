@@ -7,6 +7,8 @@ import "../styles/addProduct.css";
 import { useRouter } from "next/navigation";
 import Navbar from "../components/navbar/page";
 
+;
+
 export default function AddProduct() {
   const [file, setFile] = useState<File | any>(null);
   const [url, setUrl] = useState<string>("");
@@ -42,6 +44,7 @@ export default function AddProduct() {
     })
     .then((res) => {
       console.log("adding", res);
+      alert("you adding")
      router.push("/")
     })
     .catch((err) => {
@@ -50,8 +53,11 @@ export default function AddProduct() {
   };
 
   return (
+   
+   
     <div className="addProduct-container">
-      <h2 className="addProduct-title">Create New Product For Sale</h2>
+
+      <h2 className="addProduct-title"> <button className="returnn" onClick={()=>{router.push("/")}}>home</button> Create New Product For Sale <button  className="myprod" onClick={()=>{router.push("myproducts")}}>my products</button></h2>
       <p className="addProduct-subtitle">You can add product over here</p>
       <div className="addProduct-content">
         <div className="addProduct-left">
@@ -171,5 +177,7 @@ export default function AddProduct() {
         </div>
       </div>
     </div>
+  
+
   );
 }

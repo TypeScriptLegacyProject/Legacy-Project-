@@ -180,4 +180,30 @@ h2 {
 
 .icon-heart2:hover {
     color: #ff0000; /* Red heart on hover */
+    
+}
+.buttonn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #800080; /* Purple button */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    margin-right: 40px;
+}
+
+.buttonn:hover {
+    background-color: #660066; /* Darker purple on hover */
+    transform: scale(1.05);
+}
+
+.buttonn:active {
+    background-color: #4b004b; /* Even darker purple on active */
+    transform: scale(0.95);
 }
