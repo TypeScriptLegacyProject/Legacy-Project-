@@ -48,7 +48,7 @@ export default function AddProduct() {
       .then((res) => {
         console.log("adding", res);
         alert("Your product has been added");
-        router.push("/myproducts");
+        router.push("/");
       })
       .catch((err) => {
         console.log(err);

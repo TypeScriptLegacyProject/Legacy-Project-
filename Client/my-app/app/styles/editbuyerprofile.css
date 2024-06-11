@@ -147,7 +147,7 @@ body {
   }
   .edit-profile-form .form-group2 input[type="text"]
   {
-    width: calc(90% - 20px); /* Adjusted width for half size inputs */
+    width: calc(90% - 20px); 
     padding: 11px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -157,7 +157,7 @@ body {
   }
   
   .edit-profile-form .form-group input[type="text"]{
-    width: calc(50% - 20px); /* Adjusted width for half size inputs */
+    width: calc(50% - 20px); 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -165,7 +165,7 @@ body {
     margin-bottom: 7px;
   }
   .edit-profile-form .form-group input[type="password"] {
-    width: calc(50% - 20px); /* Adjusted width for half size inputs */
+    width: calc(50% - 20px); 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -174,7 +174,7 @@ body {
   }
   
   .edit-profile-form .form-group input[type="email"] {
-    width: 48%; /* Full width for email input */
+    width: 48%; 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -206,7 +206,7 @@ body {
     margin-top: 5px;
   }
   
-  /* Footer Styles */
+
   .footer {
     background-color: #111;
     color: #fff;

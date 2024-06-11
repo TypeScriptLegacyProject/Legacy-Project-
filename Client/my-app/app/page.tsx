@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./styles/home.css";
 import CarouselComponent from "./components/carousel/page"
 import { useRouter } from "next/navigation";
+import Footer from "./components/footer/page";
 
 export default function Home() {
   const [prod, setProd] = useState<any[]>([]);
@@ -237,6 +238,7 @@ const router=useRouter()
           </div>
         </div>
       </div>
+      <Footer/>
       <ToastContainer />
     </div>
   );
